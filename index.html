@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>ToDoリスト</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>ToDoリスト</h1>
+      <h2>タスク一覧</h2>
+
+      <div class="row">
+      <h3>ToDo</h3>
+      <div>
+        <draggable class="todo-area" :list="todos" :options="{group: 'TASKS', animation: 150}">
+          <div v-for="(todo, index) in todos">
+            <label>
+              <input type="checkbox" v-model="todo.isDone">
+              <span v-bind:class="{ done: todo.isDone }">{{ todo.name }}</span>
+              <button v-on:click="deleteTask(todos, index)">削除</button>
+            </label>
+          </div>
+        </draggable>
+      </div>
+      <h3>Doing</h3>
+      <div>
+        <draggable class="doing-area" :list="doings" :options="{group: 'TASKS', animation: 150}">
+          <div v-for="(doing, index) in doings">
+            <label>
+              <input type="checkbox" v-model="doing.isDone">
+              <span v-bind:class="{ done: doing.isDone }">{{ doing.name }}</span>
+              <button v-on:click="deleteTask(doings, index)">削除</button>
+            </label>
+          </div>
+        </draggable>
+      </div>
+      <h3>Done</h3>
+      <div>
+        <draggable class="done-area" :list="dones" :options="{group: 'TASKS', animation: 150}">
+          <div v-for="(done, index) in dones">
+            <label>
+              <input type="checkbox" v-model="done.isDone">
+              <span v-bind:class="{ done: done.isDone }">{{ done.name }}</span>
+              <button v-on:click="deleteTask(dones, index)">削除</button>
+            </label>
+          </div>
+        </draggable>
+      </div>
+
+      <h2>タスク追加</h2>
+      <input type="text" v-model="newTask" v-bind:value="newTask" placeholder="タスクを入力して下さい">
+      <button v-on:click="addTask">追加</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.7.0/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.17.0/vuedraggable.min.js"></script>
+    <script src="./todo.js">
+    </script>
+  </body>
+</html>
