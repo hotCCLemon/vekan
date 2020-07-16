@@ -1,9 +1,31 @@
+.columns{
+  display: flex;
+}
+
+.column-title{
+  height: 100%;
+  width: 50%;
+  background-color: #66ff99;
+  border: solid 1px;
+  text-align: center;
+}
+
+.column{
+  width: 50%;
+  padding: 20px;
+  background-color: #ffffcc;
+  border: solid 1px;
+}
+
 .todo-area{
   min-height: 15px;
 }
+
 .doing-area{
   min-height: 15px;
 }
+
 .done-area{
   min-height: 15px;
 }
+

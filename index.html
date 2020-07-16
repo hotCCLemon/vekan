@@ -10,11 +10,27 @@
   <body>
     <div id="app">
       <h1>ToDoリスト</h1>
-      <h2>タスク一覧</h2>
 
-      <div class="row">
-      <h3>ToDo</h3>
-      <div>
+    <div class="taskAdd">
+      <h2>タスク追加</h2>
+      <input type="text" v-model="newTask" v-bind:value="newTask" placeholder="タスクを入力して下さい">
+      <button v-on:click="addTask">追加</button>
+    </div>
+
+    <h2>タスク一覧</h2>
+    <div class="columns">
+      <div class="column-title">
+        <h3>ToDo</h3>
+      </div>
+    <div class="column-title">
+        <h3>Doing</h3>
+      </div>
+    <div class="column-title">
+        <h3>Done</h3>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column">
         <draggable class="todo-area" :list="todos" :options="{group: 'TASKS', animation: 150}">
           <div v-for="(todo, index) in todos">
             <label>
@@ -25,8 +41,7 @@
           </div>
         </draggable>
       </div>
-      <h3>Doing</h3>
-      <div>
+      <div class="column">
         <draggable class="doing-area" :list="doings" :options="{group: 'TASKS', animation: 150}">
           <div v-for="(doing, index) in doings">
             <label>
@@ -37,8 +52,7 @@
           </div>
         </draggable>
       </div>
-      <h3>Done</h3>
-      <div>
+      <div class="column">
         <draggable class="done-area" :list="dones" :options="{group: 'TASKS', animation: 150}">
           <div v-for="(done, index) in dones">
             <label>
@@ -49,10 +63,6 @@
           </div>
         </draggable>
       </div>
-
-      <h2>タスク追加</h2>
-      <input type="text" v-model="newTask" v-bind:value="newTask" placeholder="タスクを入力して下さい">
-      <button v-on:click="addTask">追加</button>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
